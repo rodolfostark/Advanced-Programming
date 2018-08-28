@@ -11,6 +11,7 @@ int main()
     int nl = 4, nc = 4, np = 4, i, j, k;
     //alocando bloco de memoria para y e verificando se a alocação foi bem sucedida
     y = (int ***)malloc(nl*sizeof(int **));
+    
     if(y == 0){
         printf("Falha na alocação de memoria de y");
         exit(0);

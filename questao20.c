@@ -1,23 +1,17 @@
+#include "gc.h"
 #include <assert.h>
 #include <stdio.h>
-#include "gc.h"
 
-int main(void)
-{
-    int i;
-    const size = 10000000;
+int main(void){
+  int i;
 
-    GC_INIT();
-    for (i = 0; i < size; ++i)
-    {
-        int **p = GC_MALLOC(sizeof *p);
-        int *q = GC_MALLOC_ATOMIC(sizeof *q);
-
-        assert(*p == 0);
-        *p = GC_REALLOC(q, 2 * sizeof *p);
-        if (i == size-1)
-            printf("Heap size = %zu\n", GC_get_heap_size());
-    }
-
-    return 0;
+  GC_INIT();
+  for (i = 0; i < 10000000; i++)
+   {
+     int **p = (int **) GC_MALLOC(sizeof(int *));
+     int *q = (int *) GC_MALLOC_ATOMIC(sizeof(int));
+     assert(*p == 0);
+     *p = (int *) GC_REALLOC(q, 12*sizeof(int));
+   }
 }
+

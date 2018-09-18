@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //use garbage collection
 #include "gc.hpp"
 using namespace agm::gc;
@@ -32,3 +33,22 @@ int main()
     //since it inherits from Object
     Bar *obj3 = new Bar;
 }
+=======
+#include "gc.h"
+#include <assert.h>
+#include <stdio.h>
+
+int main(void){
+  int i;
+
+  GC_INIT();
+  for (i = 0; i < 10000000; i++)
+   {
+     int **p = (int **) GC_MALLOC(sizeof(int *));
+     int *q = (int *) GC_MALLOC_ATOMIC(sizeof(int));
+     assert(*p == 0);
+     *p = (int *) GC_REALLOC(q, 12*sizeof(int));
+   }
+}
+
+>>>>>>> 4146184b57bfbf4ac87cfabf97c24577dc2ab363

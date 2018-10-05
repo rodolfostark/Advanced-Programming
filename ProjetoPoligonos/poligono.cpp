@@ -1,5 +1,8 @@
 #include <iostream>
+#include <cmath>
 #include "poligono.h"
+
+using namespace std;
 
 Poligono::Poligono()
 {
@@ -8,35 +11,58 @@ Poligono::Poligono()
 
 void Poligono::inserirVertice(Point p)
 {
-    if(numeroVertices == 0){
-        vertices[numeroVertices] = p;
+    if(numeroVertices < 100){
+        if(numeroVertices == 0){
+            vertices[numeroVertices] = p;
+            numeroVertices++;
+        }
+        else {
+            vertices[numeroVertices] = p;
+            numeroVertices++;
+        }
     }
     else {
-        numeroVertices++;
-        vertices[numeroVertices] = p;
+        cout << "Impossível inserir novo vértice!" << endl;
     }
 }
 
 int Poligono::quantidadeVertices()
 {
-    return numeroVertices + 1;
+    return numeroVertices;
 }
 
 float Poligono::areaPoligono()
 {
     float area = 0.0;
-    for(int i = 0, j = n;i < n+1;i++, j = n){
+    int j = numeroVertices-1;
+    for(int i = 0;i < numeroVertices;i++){
         area += (vertices[j].getX() + vertices[i].getX()) * (vertices[j].getY() - vertices[i].getY());
+        j = i;
     }
     return abs(area/2);
 }
 void Poligono::transladarPoligono(float a, float b){
-    for(int i = 0; i <= numeroVertices; i++){
+    for(int i = 0; i < numeroVertices; i++){
         vertices[i].translada(a, b);
     }
 }
-void Poligono::imprimirPoligono(){
-    for(int i = 0; i <= numeroVertices; i++){
-        cout << vertices[i].imprime(); << "->";
+
+void Poligono::rotacionarPoligono(float a, float b, float angulo)
+{
+    angulo = angulo*(M_PI/180);
+    transladarPoligono(a, b);
+    for(int i = 0; i < numeroVertices; i++){
+        float novoX = vertices[i].getX()*cos(angulo) - vertices[i].getY()*sin(angulo);
+        float novoY = vertices[i].getY()*cos(angulo) + vertices[i].getX()*sin(angulo);
+        vertices[i].setXY(novoX, novoY);
     }
+    transladarPoligono(-a, -b);
+}
+void Poligono::imprimirPoligono(){
+    for(int i = 0; i < numeroVertices; i++){
+        vertices[i].imprime();
+        cout << "->";
+    }
+    vertices[0].imprime();
+    cout << endl;
 }

@@ -4,7 +4,7 @@
 
 class Poligono
 {
-private:
+protected:
     Point vertices[100];
     int numeroVertices = 0;
 public:
@@ -13,7 +13,7 @@ public:
     int quantidadeVertices();
     float areaPoligono();
     void transladarPoligono(float a, float b);
-    void rotacionarPoligono(float angulo, Point p);
+    void rotacionarPoligono(float a, float b, float angulo);
     void imprimirPoligono();
 };
 

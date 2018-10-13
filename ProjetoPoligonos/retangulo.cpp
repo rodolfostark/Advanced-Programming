@@ -16,7 +16,8 @@ Retangulo::Retangulo(float _altura, float _largura, float _x, float _y)
     this->imprimirPoligono();
 }
 
-float Retangulo::areaRetangulo()
+float Retangulo::areaPoligono()
 {
-    return this->areaPoligono();
+    return Poligono::areaPoligono();
 }
+

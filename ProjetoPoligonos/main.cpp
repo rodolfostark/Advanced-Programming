@@ -25,8 +25,9 @@ int main()
     cout << "=== Testando Retangulo ===" << endl;
     Retangulo r1(3, 4, 0, 0);
     float area = r1.areaRetangulo();
-    r1.transladarPoligono(-3, 4);
     r1.imprimirPoligono();
+    //r1.transladarPoligono(-3, 4);
+    //r1.imprimirPoligono();
     cout << "A área do retangulo vale: " << area << endl;
     return 0;
 }

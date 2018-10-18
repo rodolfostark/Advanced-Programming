@@ -1,24 +1,27 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include<iostream>
-#include<ostream>
+#include <iostream>
+#include <ostream>
 #include <vector>
+
+using namespace std;
 
 class Screen
 {
 private:
     int numero_linhas;
     int numero_colunas;
-    char brush;
-   // vector<vectot<char>> matriz_tela;
+    char brush = ' ';
+    vector<vector<char>> matriz_tela;
 public:
     Screen();
-    Screen(int numero_linhas, int numero_colunas);
+    Screen(int n_linhas, int n_colunas);
     void setPixel(int x, int y);
     void clear();
-    void setBrush();
-    //friend ostream& operator << (ostream &os, Screen &t);
+    void setBrush(char novoBrush);
+    void printScreen();
+    friend ostream& operator << (ostream &os, Screen &t);
 };
 
 #endif // SCREEN_H

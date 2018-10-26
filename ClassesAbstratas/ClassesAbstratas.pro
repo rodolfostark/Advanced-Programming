@@ -5,7 +5,16 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-    screen.cpp
+    screen.cpp \
+    reta.cpp \
+    retangulo.cpp \
+    circulo.cpp \
+    leitordefiguras.cpp
 
 HEADERS += \
-    screen.h
+    screen.h \
+    figurageometrica.h \
+    reta.h \
+    retangulo.h \
+    circulo.h \
+    leitordefiguras.h

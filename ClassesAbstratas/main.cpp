@@ -1,13 +1,14 @@
 #include <iostream>
 #include "screen.h"
-
-using namespace std;
+#include "reta.h"
 
 int main()
 {
-    Screen novaTela(3, 3);
+    Reta r1(0,0,4,4);
+    Screen novaTela(6, 6);
     novaTela.setBrush('$');
     novaTela.setPixel(2, 2);
-    novaTela.printScreen();
+    r1.draw(novaTela);
+    std::cout << novaTela;
     return 0;
 }

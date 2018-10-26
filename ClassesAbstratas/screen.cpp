@@ -26,12 +26,13 @@ void Screen::setBrush(char novoBrush)
     brush = novoBrush;
 }
 
-void Screen::printScreen()
+ostream& operator << (ostream &os,Screen &t)
 {
-    for(int i = 0; i < numero_linhas; i++){
-        for(int j = 0; j < numero_colunas; j++){
-            cout << matriz_tela[i][j] << " ";
+    for(int i = 0; i < t.numero_linhas; i++){
+        for(int j = 0; j < t.numero_colunas; j++){
+            os << t.matriz_tela[i][j];
         }
-        cout << endl;
+        os << endl;
     }
+    return os;
 }

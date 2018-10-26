@@ -20,7 +20,6 @@ public:
     void setPixel(int x, int y);
     void clear();
     void setBrush(char novoBrush);
-    void printScreen();
     friend ostream& operator << (ostream &os, Screen &t);
 };
 

@@ -12,7 +12,7 @@ class Screen
 private:
     int numero_linhas;
     int numero_colunas;
-    char brush = ' ';
+    char brush = '-';
     vector<vector<char>> matriz_tela;
 public:
     Screen();
@@ -20,7 +20,7 @@ public:
     void setPixel(int x, int y);
     void clear();
     void setBrush(char novoBrush);
-    friend ostream& operator << (ostream &os, Screen &t);
+    friend ostream& operator << (ostream &saida, Screen &tela);
 };
 
 

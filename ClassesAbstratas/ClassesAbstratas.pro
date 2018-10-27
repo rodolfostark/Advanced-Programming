@@ -7,10 +7,14 @@ SOURCES += \
         main.cpp \
     screen.cpp \
     reta.cpp \
-    sinal.cpp
+    sinal.cpp \
+    retangulo.cpp \
+    circulo.cpp
 
 HEADERS += \
     screen.h \
     figurageometrica.h \
     reta.h \
-    funcoes.h
+    funcoes.h \
+    retangulo.h \
+    circulo.h

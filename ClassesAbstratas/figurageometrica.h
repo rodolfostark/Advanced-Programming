@@ -6,7 +6,7 @@
 class FiguraGeometrica
 {
 public:
-   virtual void draw(Screen &t) = 0;
+   virtual void draw(Screen &tela) = 0;
 };
 
 #endif // FIGURAGEOMETRICA_H

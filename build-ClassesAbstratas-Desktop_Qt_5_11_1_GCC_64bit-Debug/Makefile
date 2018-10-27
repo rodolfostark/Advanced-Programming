@@ -53,11 +53,15 @@ OBJECTS_DIR   = ./
 SOURCES       = ../ClassesAbstratas/main.cpp \
 		../ClassesAbstratas/screen.cpp \
 		../ClassesAbstratas/reta.cpp \
-		../ClassesAbstratas/sinal.cpp 
+		../ClassesAbstratas/sinal.cpp \
+		../ClassesAbstratas/retangulo.cpp \
+		../ClassesAbstratas/circulo.cpp 
 OBJECTS       = main.o \
 		screen.o \
 		reta.o \
-		sinal.o
+		sinal.o \
+		retangulo.o \
+		circulo.o
 DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/linux.conf \
@@ -244,10 +248,14 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../ClassesAbstratas/ClassesAbstratas.pro screen.h \
 		figurageometrica.h \
 		reta.h \
-		funcoes.h ../ClassesAbstratas/main.cpp \
+		funcoes.h \
+		retangulo.h \
+		circulo.h ../ClassesAbstratas/main.cpp \
 		../ClassesAbstratas/screen.cpp \
 		../ClassesAbstratas/reta.cpp \
-		../ClassesAbstratas/sinal.cpp
+		../ClassesAbstratas/sinal.cpp \
+		../ClassesAbstratas/retangulo.cpp \
+		../ClassesAbstratas/circulo.cpp
 QMAKE_TARGET  = ClassesAbstratas
 DESTDIR       = 
 TARGET        = ClassesAbstratas
@@ -688,6 +696,14 @@ reta.o: ../ClassesAbstratas/reta.cpp ../ClassesAbstratas/screen.h \
 
 sinal.o: ../ClassesAbstratas/sinal.cpp ../ClassesAbstratas/funcoes.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sinal.o ../ClassesAbstratas/sinal.cpp
+
+retangulo.o: ../ClassesAbstratas/retangulo.cpp ../ClassesAbstratas/retangulo.h \
+		../ClassesAbstratas/screen.h \
+		../ClassesAbstratas/figurageometrica.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o retangulo.o ../ClassesAbstratas/retangulo.cpp
+
+circulo.o: ../ClassesAbstratas/circulo.cpp ../ClassesAbstratas/circulo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o circulo.o ../ClassesAbstratas/circulo.cpp
 
 ####### Install
 

@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 #include <iostream>
 #include "screen.h"
 #include "reta.h"
 #include "funcoes.h"
-=======
 #include "reta.h"
->>>>>>> afa5106f33663bc04a5095e7feb097d3af12c403
+
 
 Reta::Reta(int _x1, int _y1, int _x2, int _y2)
 {
@@ -16,7 +14,6 @@ Reta::Reta(int _x1, int _y1, int _x2, int _y2)
 }
 
 void Reta::draw(Screen &t){
-<<<<<<< HEAD
     int x = x1;
     int y = y1;
     int Delta_x = abs(x2 - x1);
@@ -99,7 +96,6 @@ void Reta::desenhaReta(int _x1, int _y1, int _x2, int _y2, Screen &t)
             x = x + s1;
         }
         new_e= new_e + 2*Delta_y;
-=======
     int m_new = 2 * (y2 - y1);
     int slope_error_new = m_new - (x2 - x1);
     for (int x = x1, y = y1; x <= x2; x++)
@@ -111,6 +107,5 @@ void Reta::desenhaReta(int _x1, int _y1, int _x2, int _y2, Screen &t)
             y++;
             slope_error_new  -= 2 * (x2 - x1);
         }
->>>>>>> afa5106f33663bc04a5095e7feb097d3af12c403
     }
 }

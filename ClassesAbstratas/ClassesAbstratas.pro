@@ -4,4 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    screen.cpp \
+    reta.cpp \
+    sinal.cpp
+
+HEADERS += \
+    screen.h \
+    figurageometrica.h \
+    reta.h \
+    funcoes.h

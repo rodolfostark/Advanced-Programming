@@ -50,8 +50,14 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../ClassesAbstratas/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../ClassesAbstratas/main.cpp \
+		../ClassesAbstratas/screen.cpp \
+		../ClassesAbstratas/reta.cpp \
+		../ClassesAbstratas/sinal.cpp 
+OBJECTS       = main.o \
+		screen.o \
+		reta.o \
+		sinal.o
 DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/linux.conf \
@@ -221,6 +227,7 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_post.prf \
+		../ClassesAbstratas/.qmake.stash \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -234,7 +241,13 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/lex.prf \
-		../ClassesAbstratas/ClassesAbstratas.pro  ../ClassesAbstratas/main.cpp
+		../ClassesAbstratas/ClassesAbstratas.pro screen.h \
+		figurageometrica.h \
+		reta.h \
+		funcoes.h ../ClassesAbstratas/main.cpp \
+		../ClassesAbstratas/screen.cpp \
+		../ClassesAbstratas/reta.cpp \
+		../ClassesAbstratas/sinal.cpp
 QMAKE_TARGET  = ClassesAbstratas
 DESTDIR       = 
 TARGET        = ClassesAbstratas
@@ -415,6 +428,7 @@ Makefile: ../ClassesAbstratas/ClassesAbstratas.pro /opt/Qt5.11.1/5.11.1/gcc_64/m
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/qt_config.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/toolchain.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -599,6 +613,7 @@ Makefile: ../ClassesAbstratas/ClassesAbstratas.pro /opt/Qt5.11.1/5.11.1/gcc_64/m
 /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/qt_config.prf:
 /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/toolchain.prf:
 /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -656,8 +671,23 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../ClassesAbstratas/main.cpp 
+main.o: ../ClassesAbstratas/main.cpp ../ClassesAbstratas/figurageometrica.h \
+		../ClassesAbstratas/screen.h \
+		../ClassesAbstratas/reta.h \
+		../ClassesAbstratas/funcoes.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ClassesAbstratas/main.cpp
+
+screen.o: ../ClassesAbstratas/screen.cpp ../ClassesAbstratas/screen.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o screen.o ../ClassesAbstratas/screen.cpp
+
+reta.o: ../ClassesAbstratas/reta.cpp ../ClassesAbstratas/screen.h \
+		../ClassesAbstratas/reta.h \
+		../ClassesAbstratas/figurageometrica.h \
+		../ClassesAbstratas/funcoes.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reta.o ../ClassesAbstratas/reta.cpp
+
+sinal.o: ../ClassesAbstratas/sinal.cpp ../ClassesAbstratas/funcoes.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sinal.o ../ClassesAbstratas/sinal.cpp
 
 ####### Install
 

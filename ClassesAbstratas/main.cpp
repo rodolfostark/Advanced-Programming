@@ -2,6 +2,7 @@
 #include "figurageometrica.h"
 #include "screen.h"
 #include "reta.h"
+<<<<<<< HEAD
 #include "funcoes.h"
 
 void desenhaReta(int _x1, int _y1, int _x2, int _y2, Screen &t){
@@ -62,5 +63,16 @@ int main()
       r1.desenhaReta(40,0,0,40, segundaTela);
       f1->draw(novaTela);
       std::cout << segundaTela;
+=======
+
+int main()
+{
+    Reta r1(0,0,4,4);
+    Screen novaTela(6, 6);
+    novaTela.setBrush('$');
+    novaTela.setPixel(2, 2);
+    r1.draw(novaTela);
+    std::cout << novaTela;
+>>>>>>> afa5106f33663bc04a5095e7feb097d3af12c403
     return 0;
 }

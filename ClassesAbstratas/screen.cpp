@@ -25,6 +25,11 @@ void Screen::setBrush(char novoBrush)
     brush = novoBrush;
 }
 
+char Screen::getBrush()
+{
+    return brush;
+}
+
 ostream& operator << (ostream &saida,Screen &tela)
 {
     for(int i = 0; i < tela.numero_linhas; i++){

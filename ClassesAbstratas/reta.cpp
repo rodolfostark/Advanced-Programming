@@ -2,6 +2,11 @@
 #include "reta.h"
 #include "funcoes.h"
 
+Reta::Reta()
+{
+
+}
+
 Reta::Reta(int _x1, int _y1, int _x2, int _y2)
 {
     x1 = _x1;

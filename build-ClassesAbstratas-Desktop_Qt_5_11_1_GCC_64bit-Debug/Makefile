@@ -679,10 +679,11 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../ClassesAbstratas/main.cpp ../ClassesAbstratas/figurageometrica.h \
-		../ClassesAbstratas/screen.h \
+main.o: ../ClassesAbstratas/main.cpp ../ClassesAbstratas/screen.h \
+		../ClassesAbstratas/figurageometrica.h \
 		../ClassesAbstratas/reta.h \
-		../ClassesAbstratas/funcoes.h
+		../ClassesAbstratas/retangulo.h \
+		../ClassesAbstratas/circulo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ClassesAbstratas/main.cpp
 
 screen.o: ../ClassesAbstratas/screen.cpp ../ClassesAbstratas/screen.h
@@ -702,7 +703,10 @@ retangulo.o: ../ClassesAbstratas/retangulo.cpp ../ClassesAbstratas/retangulo.h \
 		../ClassesAbstratas/figurageometrica.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o retangulo.o ../ClassesAbstratas/retangulo.cpp
 
-circulo.o: ../ClassesAbstratas/circulo.cpp ../ClassesAbstratas/circulo.h
+circulo.o: ../ClassesAbstratas/circulo.cpp ../ClassesAbstratas/circulo.h \
+		../ClassesAbstratas/figurageometrica.h \
+		../ClassesAbstratas/screen.h \
+		../ClassesAbstratas/reta.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o circulo.o ../ClassesAbstratas/circulo.cpp
 
 ####### Install

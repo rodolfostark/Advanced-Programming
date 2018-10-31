@@ -7,15 +7,18 @@ Reta::Reta()
 
 }
 
-Reta::Reta(int _x1, int _y1, int _x2, int _y2)
+Reta::Reta(int _x1, int _y1, int _x2, int _y2, char _brush)
 {
     x1 = _x1;
     y1 = _y1;
     x2 = _x2;
     y2 = _y2;
+    brush = _brush;
 }
 
 void Reta::draw(Screen &tela){
+    char aux_brush = tela.getBrush();
+    tela.setBrush(brush);
     int x = x1;
     int y = y1;
     int delta_x = abs(x2 - x1);
@@ -53,4 +56,5 @@ void Reta::draw(Screen &tela){
         }
         new_e = new_e + 2*delta_y;
     }
+    tela.setBrush(aux_brush);
 }

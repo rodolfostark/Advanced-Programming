@@ -11,8 +11,9 @@ private:
     int altura;
     int largura;
     int fillmode;
+    char brush;
 public:
-    Retangulo(int _x, int _y, int _altura, int _largura, int _fillmode);
+    Retangulo(int _x, int _y, int _altura, int _largura, int _fillmode, char _brush);
     void draw(Screen &tela);
 };
 

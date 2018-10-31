@@ -1,4 +1,8 @@
 #include <iostream>
+#include <ostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include "screen.h"
 #include "figurageometrica.h"
 #include "reta.h"
@@ -9,18 +13,53 @@ using namespace std;
 
 int main()
 {
-    //Reta reta(40, 1, 1, 40);
-    Retangulo plano(2, 5, 8, 8, 0);
-    //Retangulo retangulo(15, 15, 6, 6, 0);
-    Circulo circulo(20, 20, 6, 0);
-    Circulo disco(32, 32, 8, 1);
-    Screen novaTela(40, 40);
-    novaTela.setBrush('#');
-    novaTela.setPixel(1, 40);
-    plano.draw(novaTela);
-    circulo.draw(novaTela);
-    disco.draw(novaTela);
-    //retangulo.draw(novaTela);
-    cout << novaTela << endl;
+    fstream arquivo;
+    ofstream saida;
+    string linha;
+    string comando;
+    stringstream ss;
+    int altura, largura;
+    vector<FiguraGeometrica *> figuras;
+    arquivo.open("/home/rodolfo/Documentos/C&T - COMPUTAÇÃO/4º SEMESTRE/PROGRAMAÇÃO AVANÇADA/DCA1202/ClassesAbstratas/figuras.txt");
+    saida.open("/home/rodolfo/Documentos/C&T - COMPUTAÇÃO/4º SEMESTRE/PROGRAMAÇÃO AVANÇADA/DCA1202/ClassesAbstratas/saida.txt");
+    while(arquivo.good()){
+        getline(arquivo, linha);
+        if(!arquivo.good()){
+            break;
+        }
+        linha += " ";
+        ss = stringstream(linha);
+        ss >> comando;
+        if(comando.compare("dim") == 0){
+            ss >> altura >> largura;
+        }
+        else if(comando.compare("rectangle") == 0){
+            int x0, y0, larg, alt, tipo;
+            char brush;
+            ss >> x0 >> y0 >> larg >> alt >> tipo >> brush;
+            figuras.push_back(new Retangulo(x0, y0, alt, larg, tipo, brush));
+        }
+        else if (comando.compare("circle") == 0) {
+            int x0, y0, raio, tipo;
+            char brush;
+            ss >> x0 >> y0 >> raio >> tipo >> brush;
+            figuras.push_back(new Circulo(x0, y0, raio, tipo, brush));
+        }
+        else if (comando.compare("line") == 0) {
+            int x0, y0, x1, y1;
+            char brush;
+            ss >> x0 >> y0 >> x1 >> y1 >> brush;
+            figuras.push_back(new Reta(x0, y0, x1, y1, brush));
+        }
+    }
+    arquivo.close();
+    Screen tela(altura, largura);
+    tela.setBrush('.');
+    for(int i = 0; i < int(figuras.size()); i++){
+        figuras[i]->draw(tela);
+    }
+    saida << tela;
+    saida.close();
+    cout << tela;
     return 0;
 }
